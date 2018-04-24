@@ -1,0 +1,45 @@
+﻿<Window x:Class="Wk13_Lab17_AsynchronousProgramming.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wk13_Lab17_AsynchronousProgramming"
+        mc:Ignorable="d"
+        Title="Asynchronous Programming Demo" Height="275" Width="500" Background="LightCyan">
+    <Window.Resources>
+            <Style TargetType="Label">
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="Foreground" Value="DarkBlue"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="FontSize" Value="16"/>
+            </Style>
+    </Window.Resources>
+    <Grid>        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel>
+            <StackPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Width" Value="180"/>
+                    <Setter Property="Margin" Value="5"/>
+                    <Setter Property="Background" Value="AliceBlue"/>
+                    <Setter Property="Foreground" Value="DarkBlue"/>
+                    <Setter Property="FontSize" Value="14"/>
+                </Style>
+            </StackPanel.Resources>
+            <Label Content="Ways of calling method"/>
+            <Button x:Name="btnNoDelay" Content="No Delay" Click="Button_ClickAsync" />
+            <Button x:Name="btnDelayIncorrect" Content="Long Delay" Click="Button_ClickAsync" />
+            <Button x:Name="btnDelaycorrect" Content="Long Delay (Correctly)" Click="Button_ClickAsync" />
+            <Button x:Name="btnWithCancellation" Content="Long Delay (With Cancel)" Click="Button_ClickAsync" />
+            <Button x:Name="btnWithProgress" Content="Long Delay (With Progress)" Click="Button_ClickAsync" />
+        </StackPanel>
+        <StackPanel Grid.Column="1">            
+            <Label Content="Results of method call"/>
+            <Label x:Name="lblStatus"  Content="" />
+            <ProgressBar x:Name="progressBar" Margin="10" Minimum="0" Maximum="100" Height="20" Value="0"/>
+        </StackPanel>
+    </Grid>
+</Window>
